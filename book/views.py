@@ -14,7 +14,7 @@ def index(request):
 
     categ_id = request.GET.get('categoryid')
     if categ_id:
-        # ถ้ามีค่า category
+        
         books = books.filter(category_id=categ_id)
 
     paginator = Paginator(books, 10)
