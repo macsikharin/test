@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+{% load humanize %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+
+    
+
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <h1>Cart List</h1>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in cart_items %}
+                    <tr>
+                        <td>{{ c.name }}</td>
+                        <td>{{ c.qty }}</td>
+                        <td>{{ c.price }}</td>
+                        <td>
+                            <a href="{% url 'book:cart_delete' slug=c.slug %}">Delete item</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'book:cart_checkout' %}" class="btn btn-primary btn-lg float-right">
+                Process checkout <i class="fa fa-chevron-right"></i>
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
